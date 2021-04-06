@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/text_home"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:textAlignment="center"
+        android:textSize="15sp" />
+
+    <GridLayout
+        android:id="@+id/gridLayout"
+        android:layout_width="280dp"
+        android:layout_height="200dp"
+        android:rowCount="5"
+        android:columnCount="1"
+        android:layout_marginLeft="20dp"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@id/text_home">
+
+        <TextView
+            android:id="@+id/textView_studentName"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:textSize="16sp"
+            android:gravity="center_vertical"
+            android:text="姓名:" />
+
+        <TextView
+            android:id="@+id/textView_studentSex"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:textSize="16sp"
+            android:gravity="center_vertical"
+            android:text="性别:" />
+
+        <TextView
+            android:id="@+id/textView_studentID"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:textSize="16sp"
+            android:gravity="center_vertical"
+            android:text="学号:" />
+
+        <TextView
+            android:id="@+id/textView_studentPhoneNumber"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:textSize="16sp"
+            android:gravity="center_vertical"
+            android:text="电话号码:" />
+
+        <TextView
+            android:id="@+id/textView_studentCredit"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:textSize="16sp"
+            android:gravity="center_vertical"
+            android:text="学分总计:" />
+    </GridLayout>
+
+    <ImageView
+        android:layout_width="120dp"
+        android:layout_height="match_parent"
+        android:src="@drawable/user"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/text_home"
+        android:layout_above="@id/listView_classes" />
+
+    <ListView
+        android:id="@+id/listView_classes"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/gridLayout"
+        android:layout_marginBottom="50dp">
+
+    </ListView>
+
+</RelativeLayout>

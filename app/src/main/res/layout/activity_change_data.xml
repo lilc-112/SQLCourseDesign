@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".student.ui.notifications.ChangeDataActivity">
+
+    <EditText
+        android:id="@+id/editText_studentName"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="100dp"
+        android:hint="姓名"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/radioGroup" />
+
+    <TextView
+        android:id="@+id/textView_sex"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:text="性别 :"
+        android:textSize="18sp"
+        android:layout_marginLeft="26dp"
+        android:layout_marginTop="8dp"
+        android:gravity="center"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editText_studentName"
+        app:layout_constraintBottom_toTopOf="@id/editText_phoneNumber" />
+
+    <RadioGroup
+        android:id="@+id/radioGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
+        app:layout_constraintStart_toEndOf="@id/textView_sex"
+        app:layout_constraintTop_toBottomOf="@+id/editText_studentName"
+        app:layout_constraintBottom_toTopOf="@id/editText_phoneNumber"
+        android:layout_marginTop="8dp"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <RadioButton
+            android:layout_width="60dp"
+            android:layout_height="40dp"
+            android:text="男"
+            android:textSize="20sp"
+            android:textColor="#FFFFFF"
+            android:gravity="center"
+            android:button="@null"
+            android:background="@drawable/radio_button"
+            android:layout_margin="10dp" />
+
+        <RadioButton
+            android:layout_width="60dp"
+            android:layout_height="40dp"
+            android:text="女"
+            android:textSize="20sp"
+            android:textColor="#FFFFFF"
+            android:gravity="center"
+            android:button="@null"
+            android:background="@drawable/radio_button"
+            android:layout_margin="10dp" />
+
+    </RadioGroup>
+
+    <EditText
+        android:id="@+id/editText_phoneNumber"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:layout_marginLeft="24dp"
+        android:hint="电话号码"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
+
+    <Button
+        android:id="@+id/changeData"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:text="确认修改"
+        app:layout_constraintTop_toBottomOf="@id/editText_phoneNumber"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
