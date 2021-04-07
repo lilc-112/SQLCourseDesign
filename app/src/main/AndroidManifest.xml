@@ -11,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".student.ui.notifications.ChangePasswordActivity"></activity>
+        <activity android:name=".ui.tools.AddScoreActivity"></activity>
+        <activity android:name=".student.ui.notifications.ChangePasswordActivity" />
         <activity android:name=".student.ui.notifications.ChangeDataActivity" />
         <activity android:name=".student.ui.dashboard.ManageClassesActivity" />
         <activity android:name=".student.ui.dashboard.AddClassesActivity" />

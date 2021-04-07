@@ -30,6 +30,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                     "phoneNumber TEXT NOT NULL," +
                     "totalCredit INTEGER)";
             db.execSQL(sql);
+            sql = "PRAGMA foreign_keys = ON";
+            db.execSQL(sql);
             sql = "CREATE TABLE student_choose_class (" +
                     "student_ID INTEGER," +
                     "class_ID INTEGER," +
