@@ -97,8 +97,10 @@ public class SlideshowAdapter extends BaseAdapter {
                         public void onClick(DialogInterface dialog, int which) {
                             DatabaseHelper db = new DatabaseHelper(context,
                                     "test_user", null, 1);
-                            db.getWritableDatabase().delete("classes", "ID=?",
-                                    new String[]{String.valueOf(data.ID)});
+                            String sql = "PRAGMA foreign_keys = ON";
+                            db.getWritableDatabase().execSQL(sql);
+                            sql = "DELETE FROM classes WHERE ID=" + data.ID;
+                            db.getWritableDatabase().execSQL(sql);
                             db.close();
                             Toast.makeText(context, "课程已删除", Toast.LENGTH_SHORT).show();
                         }
