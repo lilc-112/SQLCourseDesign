@@ -118,6 +118,7 @@ public class ManageClassesAdapter extends BaseAdapter {
 
                             builder.setPositiveButton("No", null);
                             builder.show();
+                            notifyDataSetChanged();
                         }
                     });
 

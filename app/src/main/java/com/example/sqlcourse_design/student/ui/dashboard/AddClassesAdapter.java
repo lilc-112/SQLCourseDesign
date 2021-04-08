@@ -106,6 +106,7 @@ public class AddClassesAdapter extends BaseAdapter {
                             values.put("class_ID", data.ID);
                             db.getWritableDatabase().insert("student_choose_class", null, values);
                             db.close();
+                            notifyDataSetChanged();
                         }
                     });
 

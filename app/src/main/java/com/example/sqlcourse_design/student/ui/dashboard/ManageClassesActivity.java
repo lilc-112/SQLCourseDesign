@@ -1,5 +1,6 @@
 package com.example.sqlcourse_design.student.ui.dashboard;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.widget.ListView;
@@ -42,4 +43,11 @@ public class ManageClassesActivity extends AppCompatActivity {
         listView = findViewById(R.id.listView_manageClasses);
         listView.setAdapter(new ManageClassesAdapter(this, classIDList, scoreList));
     }
+
+    public void refresh() {
+        finish();
+        Intent intent = new Intent(this, ManageClassesActivity.class);
+        startActivity(intent);
+    }
+
 }

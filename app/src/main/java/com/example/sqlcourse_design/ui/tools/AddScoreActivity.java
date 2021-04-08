@@ -84,6 +84,7 @@ public class AddScoreActivity extends AppCompatActivity {
                 }
 
                 Toast.makeText(AddScoreActivity.this, "提交成功", Toast.LENGTH_SHORT).show();
+                finish();
             }
         });
     }

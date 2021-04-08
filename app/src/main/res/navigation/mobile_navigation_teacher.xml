@@ -8,36 +8,30 @@
     <fragment
         android:id="@+id/nav_home"
         android:name="com.example.sqlcourse_design.ui.home.TeacherHomeFragment"
-        android:label="@string/menu_home"
+        android:label="主页"
         tools:layout="@layout/fragment_home_teacher" />
 
     <fragment
         android:id="@+id/nav_gallery"
         android:name="com.example.sqlcourse_design.ui.gallery.GalleryFragment"
-        android:label="@string/menu_gallery"
+        android:label="添加课程"
         tools:layout="@layout/fragment_gallery" />
 
     <fragment
         android:id="@+id/nav_slideshow"
         android:name="com.example.sqlcourse_design.ui.slideshow.SlideshowFragment"
-        android:label="@string/menu_slideshow"
+        android:label="删除课程"
         tools:layout="@layout/fragment_slideshow" />
 
     <fragment
         android:id="@+id/nav_tools"
         android:name="com.example.sqlcourse_design.ui.tools.ToolsFragment"
-        android:label="@string/menu_tools"
+        android:label="成绩管理"
         tools:layout="@layout/fragment_tools" />
-
-    <fragment
-        android:id="@+id/nav_share"
-        android:name="com.example.sqlcourse_design.ui.share.ShareFragment"
-        android:label="@string/menu_share"
-        tools:layout="@layout/fragment_share" />
 
     <fragment
         android:id="@+id/nav_send"
         android:name="com.example.sqlcourse_design.ui.send.SendFragment"
-        android:label="@string/menu_send"
+        android:label="退出登录"
         tools:layout="@layout/fragment_send" />
 </navigation>

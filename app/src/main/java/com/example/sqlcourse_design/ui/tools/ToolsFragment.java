@@ -42,7 +42,7 @@ public class ToolsFragment extends Fragment {
         toolsViewModel.getText().observe(this, new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
-                textView.setText(s);
+                textView.setText("");
             }
         });
         classID = 0;

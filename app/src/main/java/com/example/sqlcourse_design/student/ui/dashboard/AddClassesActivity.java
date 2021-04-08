@@ -1,5 +1,6 @@
 package com.example.sqlcourse_design.student.ui.dashboard;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.widget.ListView;
@@ -40,6 +41,12 @@ public class AddClassesActivity extends AppCompatActivity {
 
         listView = findViewById(R.id.listView_addClasses);
         listView.setAdapter(new AddClassesAdapter(this, classList));
+    }
+
+    public void refresh() {
+        finish();
+        Intent intent = new Intent(this, AddClassesActivity.class);
+        startActivity(intent);
     }
 
     private boolean isChosen(int ID) {

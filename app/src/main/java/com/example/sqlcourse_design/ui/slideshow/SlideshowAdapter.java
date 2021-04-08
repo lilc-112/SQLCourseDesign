@@ -103,6 +103,7 @@ public class SlideshowAdapter extends BaseAdapter {
                             db.getWritableDatabase().execSQL(sql);
                             db.close();
                             Toast.makeText(context, "课程已删除", Toast.LENGTH_SHORT).show();
+                            notifyDataSetChanged();
                         }
                     });
 

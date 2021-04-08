@@ -6,26 +6,23 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_home"
-            android:title="@string/menu_home" />
+            android:title="主页" />
         <item
             android:id="@+id/nav_gallery"
-            android:title="@string/menu_gallery" />
+            android:title="添加课程" />
         <item
             android:id="@+id/nav_slideshow"
-            android:title="@string/menu_slideshow" />
+            android:title="删除课程" />
         <item
             android:id="@+id/nav_tools"
-            android:title="@string/menu_tools" />
+            android:title="成绩管理" />
     </group>
 
-    <item android:title="Communicate">
+    <item android:title="个人中心">
         <menu>
             <item
-                android:id="@+id/nav_share"
-                android:title="@string/menu_share" />
-            <item
                 android:id="@+id/nav_send"
-                android:title="@string/menu_send" />
+                android:title="退出登录" />
         </menu>
     </item>
 
