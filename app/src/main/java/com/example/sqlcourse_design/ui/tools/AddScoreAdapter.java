@@ -11,12 +11,15 @@ import android.widget.TextView;
 import com.example.sqlcourse_design.R;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
 
 public class AddScoreAdapter extends BaseAdapter {
 
     private Context context;
     private LayoutInflater layoutInflater;
     private ArrayList<Student> studentArrayList;
+    private HashMap<Integer, EditText> map;
     private int count;
 
     public AddScoreAdapter(Context context, ArrayList<Student> studentArrayList) {
@@ -24,6 +27,17 @@ public class AddScoreAdapter extends BaseAdapter {
         this.layoutInflater = LayoutInflater.from(context);
         this.studentArrayList = studentArrayList;
         this.count = studentArrayList.size();
+        this.map = new HashMap();
+    }
+
+    public HashMap getMap() {
+        HashMap<Integer, String> map = new HashMap<>();
+        Iterator i = this.map.keySet().iterator();
+        while (i.hasNext()) {
+            int ID = (int) i.next();
+            map.put(ID, this.map.get(ID).getText().toString());
+        }
+        return map;
     }
 
     static class Student {
@@ -74,6 +88,7 @@ public class AddScoreAdapter extends BaseAdapter {
             viewHolder.textView_name.setText(data.name);
             viewHolder.textView_ID.setText("学号 :" + data.ID);
             viewHolder.editText.setText("" + data.score);
+            map.put(data.ID, viewHolder.editText);
 
             convertView.setTag(viewHolder);
         } else {
