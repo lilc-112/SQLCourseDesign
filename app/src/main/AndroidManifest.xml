@@ -11,7 +11,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.tools.AddScoreActivity"></activity>
+        <activity android:name=".teacher.ui.tools.AddScoreActivity"></activity>
         <activity android:name=".student.ui.notifications.ChangePasswordActivity" />
         <activity android:name=".student.ui.notifications.ChangeDataActivity" />
         <activity android:name=".student.ui.dashboard.ManageClassesActivity" />
@@ -21,7 +21,7 @@
             android:label="@string/title_activity_main3" />
         <activity android:name=".SignOnActivity" />
         <activity
-            android:name=".Main2Activity"
+            android:name=".teacher.Main2Activity"
             android:label="@string/title_activity_main2"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity

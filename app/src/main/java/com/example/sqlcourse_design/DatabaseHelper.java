@@ -28,7 +28,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                     "name TEXT NOT NULL," +
                     "sex TEXT NOT NULL," +
                     "phoneNumber TEXT NOT NULL," +
-                    "totalCredit INTEGER)";
+                    "totalCredit INTEGER DEFAULT 0)";
             db.execSQL(sql);
             sql = "CREATE TABLE student_choose_class (" +
                     "student_ID INTEGER," +

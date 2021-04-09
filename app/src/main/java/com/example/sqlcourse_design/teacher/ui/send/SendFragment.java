@@ -1,4 +1,4 @@
-package com.example.sqlcourse_design.ui.send;
+package com.example.sqlcourse_design.teacher.ui.send;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;

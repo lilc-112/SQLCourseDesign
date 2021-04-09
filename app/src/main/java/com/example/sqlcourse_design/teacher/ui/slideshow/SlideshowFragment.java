@@ -1,4 +1,4 @@
-package com.example.sqlcourse_design.ui.slideshow;
+package com.example.sqlcourse_design.teacher.ui.slideshow;
 
 import android.database.Cursor;
 import android.os.Bundle;

@@ -27,6 +27,7 @@ public class HomeFragment extends Fragment {
     private TextView textView_ID;
     private TextView textView_sex;
     private TextView textView_phoneNumber;
+    private TextView textView_credit;
 
     private ArrayList<Integer> classIDList;
     private ArrayList<String> scoreList;
@@ -52,10 +53,11 @@ public class HomeFragment extends Fragment {
         textView_ID = root.findViewById(R.id.textView_studentID);
         textView_sex = root.findViewById(R.id.textView_studentSex);
         textView_phoneNumber = root.findViewById(R.id.textView_studentPhoneNumber);
+        textView_credit = root.findViewById(R.id.textView_studentCredit);
 
         DatabaseHelper db = new DatabaseHelper(getContext(), "test_user", null, 1);
         Cursor cursor = db.getReadableDatabase().query(
-                "student", new String[]{"ID", "name", "sex", "phoneNumber"}, null,
+                "student", new String[]{"ID", "name", "sex", "phoneNumber", "totalCredit"}, null,
                 null, null, null, null);
         while (cursor.moveToNext()) {
             int columnIndex = cursor.getColumnIndex("ID");
@@ -67,6 +69,8 @@ public class HomeFragment extends Fragment {
                         cursor.getString(cursor.getColumnIndex("sex")));
                 textView_phoneNumber.setText("电话 :" +
                         cursor.getString(cursor.getColumnIndex("phoneNumber")));
+                textView_credit.setText("学分总计 :" +
+                        cursor.getInt(cursor.getColumnIndex("totalCredit")));
 
                 break;
             }

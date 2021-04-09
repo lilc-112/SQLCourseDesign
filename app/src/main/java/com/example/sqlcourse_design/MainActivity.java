@@ -8,6 +8,7 @@ import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.sqlcourse_design.login.LoginActivity;
+import com.example.sqlcourse_design.teacher.Main2Activity;
 
 public class MainActivity extends AppCompatActivity {
 

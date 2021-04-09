@@ -1,4 +1,4 @@
-package com.example.sqlcourse_design.ui.gallery;
+package com.example.sqlcourse_design.teacher.ui.gallery;
 
 // import android.app.AlertDialog;
 

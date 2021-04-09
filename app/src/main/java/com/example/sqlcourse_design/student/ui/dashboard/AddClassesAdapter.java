@@ -77,48 +77,57 @@ public class AddClassesAdapter extends BaseAdapter {
             holder.textView_credit = convertView.findViewById(R.id.textView_credit);
             holder.button = convertView.findViewById(R.id.button_addClass);
 
-            final Class data = classList.get(position);
-            holder.textView_className.setText(data.name);
-            holder.textView_teacher.setText("授课教师 :" + data.teacher);
-            holder.textView_credit.setText("学分 :" + data.credit);
-
-
-            if (data.flag) {
-                holder.button.setText("已选");
-                holder.button.setEnabled(false);
-            }
-
-            holder.button.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    AlertDialog.Builder builder =
-                            new AlertDialog.Builder(context);
-                    builder.setTitle("Are you sure ?");
-                    builder.setMessage("请确认是否添加选课 ?");
-
-                    builder.setNegativeButton("Yes", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            DatabaseHelper db = new DatabaseHelper(context,
-                                    "test_user", null, 1);
-                            ContentValues values = new ContentValues();
-                            values.put("student_ID", LoginActivity.getLoginID());
-                            values.put("class_ID", data.ID);
-                            db.getWritableDatabase().insert("student_choose_class", null, values);
-                            db.close();
-                            notifyDataSetChanged();
-                        }
-                    });
-
-                    builder.setPositiveButton("No", null);
-                    builder.show();
-                }
-            });
-
             convertView.setTag(holder);
         } else {
             holder = (ViewHolder) convertView.getTag();
         }
+
+        final Class data = classList.get(position);
+        holder.textView_className.setText(data.name);
+        holder.textView_teacher.setText("授课教师 :" + data.teacher);
+        holder.textView_credit.setText("学分 :" + data.credit);
+
+
+        if (data.flag) {
+            holder.button.setText("已选");
+            holder.button.setEnabled(false);
+        }
+
+        holder.button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder builder =
+                        new AlertDialog.Builder(context);
+                builder.setTitle("Are you sure ?");
+                builder.setMessage("请确认是否添加选课 ?");
+
+                builder.setNegativeButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        DatabaseHelper db = new DatabaseHelper(context,
+                                "test_user", null, 1);
+                        ContentValues values = new ContentValues();
+                        values.put("student_ID", LoginActivity.getLoginID());
+                        values.put("class_ID", data.ID);
+                        db.getWritableDatabase().insert("student_choose_class", null, values);
+
+                        ArrayList<Integer> idList = new ArrayList<>();
+                        for (Class i : classList) {
+                            idList.add(i.ID);
+                        }
+
+                        classList.get(idList.indexOf(data.ID)).flag = true;
+
+                        db.close();
+                        notifyDataSetChanged();
+                    }
+                });
+
+                builder.setPositiveButton("No", null);
+                builder.show();
+            }
+        });
+
 
         return convertView;
     }

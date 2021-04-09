@@ -1,4 +1,4 @@
-package com.example.sqlcourse_design;
+package com.example.sqlcourse_design.teacher;
 
 import android.os.Bundle;
 import android.view.Menu;
@@ -11,6 +11,7 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
+import com.example.sqlcourse_design.R;
 import com.google.android.material.navigation.NavigationView;
 
 ;

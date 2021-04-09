@@ -1,4 +1,4 @@
-package com.example.sqlcourse_design.ui.home;
+package com.example.sqlcourse_design.teacher.ui.home;
 
 import android.content.Context;
 import android.view.LayoutInflater;

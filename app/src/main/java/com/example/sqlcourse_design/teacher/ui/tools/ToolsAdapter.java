@@ -1,4 +1,4 @@
-package com.example.sqlcourse_design.ui.tools;
+package com.example.sqlcourse_design.teacher.ui.tools;
 
 import android.content.Context;
 import android.view.LayoutInflater;

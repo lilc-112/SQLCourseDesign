@@ -1,16 +1,16 @@
-package com.example.sqlcourse_design.ui.gallery;
+package com.example.sqlcourse_design.teacher.ui.slideshow;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class GalleryViewModel extends ViewModel {
+public class SlideshowViewModel extends ViewModel {
 
     private MutableLiveData<String> mText;
 
-    public GalleryViewModel() {
+    public SlideshowViewModel() {
         mText = new MutableLiveData<>();
-        mText.setValue("");
+        mText.setValue("This is slideshow fragment");
     }
 
     public LiveData<String> getText() {

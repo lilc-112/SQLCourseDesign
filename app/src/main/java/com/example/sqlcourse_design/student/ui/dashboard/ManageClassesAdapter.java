@@ -73,64 +73,68 @@ public class ManageClassesAdapter extends BaseAdapter {
             holder.textView_credit = convertView.findViewById(R.id.textView_credit);
             holder.button = convertView.findViewById(R.id.button_addClass);
 
-            DatabaseHelper db = new DatabaseHelper(context, "test_user", null, 1);
-            Cursor cursor = db.getReadableDatabase().query(
-                    "classes", new String[]{"ID", "name", "teacher", "credit"}, null, null,
-                    null, null, null);
-
-            while (cursor.moveToNext()) {
-                final Integer classID = cursor.getInt(cursor.getColumnIndex("ID"));
-                if (classIDList.contains(classID)) {
-                    int index = classIDList.indexOf(classID);
-                    if (!indexList[index]) {
-                        continue;
-                    }
-                    if (!"".equals(scoreList.get(index))) {
-                        holder.button.setEnabled(false);
-                    }
-                    holder.textView_className.setText(cursor.getString(cursor.getColumnIndex("name")));
-                    holder.textView_credit.setText("学分 : " +
-                            cursor.getString(cursor.getColumnIndex("credit")));
-                    holder.textView_teacher.setText("教师 : " +
-                            cursor.getString(cursor.getColumnIndex("teacher")));
-                    holder.button.setText("退选");
-                    indexList[index] = false;
-
-                    holder.button.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            AlertDialog.Builder builder =
-                                    new AlertDialog.Builder(context);
-                            builder.setTitle("Are you sure ?");
-                            builder.setMessage("请确认是否退选改课程 ?");
-
-                            builder.setNegativeButton("Yes", new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialog, int which) {
-                                    DatabaseHelper db = new DatabaseHelper(context,
-                                            "test_user", null, 1);
-                                    db.getWritableDatabase().delete(
-                                            "student_choose_class", "class_ID=?",
-                                            new String[]{classID.toString()});
-                                    db.close();
-                                }
-                            });
-
-                            builder.setPositiveButton("No", null);
-                            builder.show();
-                            notifyDataSetChanged();
-                        }
-                    });
-
-                    break;
-                }
-            }
-            db.close();
-
             convertView.setTag(holder);
         } else {
             holder = (ViewHolder) convertView.getTag();
         }
+
+        DatabaseHelper db = new DatabaseHelper(context, "test_user", null, 1);
+        Cursor cursor = db.getReadableDatabase().query(
+                "classes", new String[]{"ID", "name", "teacher", "credit"}, null, null,
+                null, null, null);
+
+        while (cursor.moveToNext()) {
+            final Integer classID = cursor.getInt(cursor.getColumnIndex("ID"));
+            if (classIDList.contains(classID)) {
+                int index = classIDList.indexOf(classID);
+                if (!indexList[index]) {
+                    continue;
+                }
+                if (!"".equals(scoreList.get(index))) {
+                    holder.button.setEnabled(false);
+                }
+                holder.textView_className.setText(cursor.getString(cursor.getColumnIndex("name")));
+                holder.textView_credit.setText("学分 : " +
+                        cursor.getString(cursor.getColumnIndex("credit")));
+                holder.textView_teacher.setText("教师 : " +
+                        cursor.getString(cursor.getColumnIndex("teacher")));
+                holder.button.setText("退选");
+                indexList[index] = false;
+
+                holder.button.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        AlertDialog.Builder builder =
+                                new AlertDialog.Builder(context);
+                        builder.setTitle("Are you sure ?");
+                        builder.setMessage("请确认是否退选该课程 ?");
+
+                        builder.setNegativeButton("Yes", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                DatabaseHelper db = new DatabaseHelper(context,
+                                        "test_user", null, 1);
+                                db.getWritableDatabase().delete(
+                                        "student_choose_class", "class_ID=?",
+                                        new String[]{classID.toString()});
+                                db.close();
+
+                                classIDList.remove(classID);
+                                count -= 1;
+                                notifyDataSetChanged();
+                            }
+                        });
+
+                        builder.setPositiveButton("No", null);
+                        builder.show();
+                    }
+                });
+
+                break;
+            }
+        }
+        db.close();
+
         return convertView;
     }
 }

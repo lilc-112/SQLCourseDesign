@@ -87,6 +87,7 @@ public class ChangeDataActivity extends AppCompatActivity {
 
                         Toast.makeText(getApplicationContext(), "修改成功",
                                 Toast.LENGTH_SHORT).show();
+                        finish();
                     }
                 });
                 builder.setPositiveButton("No", null);

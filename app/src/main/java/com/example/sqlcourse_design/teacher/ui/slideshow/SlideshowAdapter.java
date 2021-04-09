@@ -1,4 +1,4 @@
-package com.example.sqlcourse_design.ui.slideshow;
+package com.example.sqlcourse_design.teacher.ui.slideshow;
 
 import android.content.Context;
 import android.content.DialogInterface;
@@ -76,47 +76,55 @@ public class SlideshowAdapter extends BaseAdapter {
             holder.textView_credit = convertView.findViewById(R.id.textView_credit);
             holder.button = convertView.findViewById(R.id.button_addClass);
 
-            final Classes data = classArrayList.get(position);
-            holder.textView_className.setText(data.name);
-            holder.textView_teacher.setText("授课教师 :" + data.teacher);
-            holder.textView_credit.setText("学分 :" + data.credit);
-            holder.button.setText("删除课程");
-            holder.button.setEnabled(!data.flag);
-            if (data.flag) holder.textView_credit.setText("学分 :" + data.credit);
-
-            holder.button.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    AlertDialog.Builder builder =
-                            new AlertDialog.Builder(context);
-                    builder.setTitle("Are you sure ?");
-                    builder.setMessage("确认删除该课程 ?\n所有已选课的同学都将强制退课。");
-
-                    builder.setNegativeButton("Yes", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            DatabaseHelper db = new DatabaseHelper(context,
-                                    "test_user", null, 1);
-                            String sql = "PRAGMA foreign_keys = ON";
-                            db.getWritableDatabase().execSQL(sql);
-                            sql = "DELETE FROM classes WHERE ID=" + data.ID;
-                            db.getWritableDatabase().execSQL(sql);
-                            db.close();
-                            Toast.makeText(context, "课程已删除", Toast.LENGTH_SHORT).show();
-                            notifyDataSetChanged();
-                        }
-                    });
-
-                    builder.setPositiveButton("No", null);
-                    builder.show();
-                }
-            });
-
             convertView.setTag(holder);
 
         } else {
             holder = (ViewHolder) convertView.getTag();
         }
+
+        final Classes data = classArrayList.get(position);
+        holder.textView_className.setText(data.name);
+        holder.textView_teacher.setText("授课教师 :" + data.teacher);
+        holder.textView_credit.setText("学分 :" + data.credit);
+        holder.button.setText("删除课程");
+        holder.button.setEnabled(!data.flag);
+        if (data.flag) holder.textView_credit.setText("学分 :" + data.credit);
+
+        holder.button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder builder =
+                        new AlertDialog.Builder(context);
+                builder.setTitle("Are you sure ?");
+                builder.setMessage("确认删除该课程 ?\n所有已选课的同学都将强制退课。");
+
+                builder.setNegativeButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        DatabaseHelper db = new DatabaseHelper(context,
+                                "test_user", null, 1);
+                        String sql = "PRAGMA foreign_keys = ON";
+                        db.getWritableDatabase().execSQL(sql);
+                        sql = "DELETE FROM classes WHERE ID=" + data.ID;
+                        db.getWritableDatabase().execSQL(sql);
+
+                        ArrayList<Integer> idList = new ArrayList<>();
+                        for (Classes i : classArrayList) {
+                            idList.add(i.ID);
+                        }
+
+                        classArrayList.remove(idList.indexOf(data.ID));
+                        db.close();
+                        Toast.makeText(context, "课程已删除", Toast.LENGTH_SHORT).show();
+                        notifyDataSetChanged();
+                    }
+                });
+
+                builder.setPositiveButton("No", null);
+                builder.show();
+            }
+        });
+
         return convertView;
     }
 }
